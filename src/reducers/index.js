@@ -8,10 +8,36 @@ const reducer = (state, action) => {
             }
 
         case 'DELETE_FAVORITE':
-            console.log(action)
+            console.log(action);
             return {
                 ...state,
                 myList: state.myList.filter(items => items.id !== action.payload)
+            }
+        case 'LOGIN':
+            console.log(action);
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case 'LOGOUT_REQUEST':
+            console.log(action);
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case 'REGISTER_REQUEST':
+            console.log(action);
+            return {
+                ...state,
+                user: action.payload,
+            }
+        case 'GET_VIDEO_SOURCE':
+            console.log(action);
+            return {
+                ...state,
+                playing: state.trends.find(item => item.id === Number(action.payload))
+                    || state.original.find(item => item.id === Number(action.payload))
+                    || [],
             }
         default:
             return state;
